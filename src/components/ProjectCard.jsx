@@ -6,6 +6,7 @@ function ProjectCard({ project, isActive, onSelect }) {
         <span>{isActive ? "Focused" : "Project"}</span>
       </div>
       <p>{project.desc}</p>
+      <p className="project-detail">{project.detail}</p>
       <div className="tag-list" aria-label={`${project.title} skills`}>
         {project.tags.map((tag) => (
           <span key={tag}>{tag}</span>

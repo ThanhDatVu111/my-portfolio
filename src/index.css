@@ -102,7 +102,9 @@ img {
 }
 
 .hero::before {
-  background: rgba(10, 18, 16, 0.54);
+  background:
+    linear-gradient(90deg, rgba(10, 18, 16, 0.86), rgba(10, 18, 16, 0.5) 48%, rgba(10, 18, 16, 0.18)),
+    linear-gradient(0deg, rgba(10, 18, 16, 0.62), rgba(10, 18, 16, 0));
   content: "";
   inset: 0;
   position: absolute;
@@ -138,6 +140,47 @@ img {
   font-size: 1.22rem;
   margin: 0;
   max-width: 670px;
+}
+
+.hero-panel {
+  align-self: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  border-radius: 8px;
+  display: grid;
+  gap: 0;
+  grid-template-columns: repeat(3, 1fr);
+  margin-left: auto;
+  max-width: 520px;
+  min-width: 430px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-panel div {
+  border-right: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 1rem;
+}
+
+.hero-panel div:last-child {
+  border-right: 0;
+}
+
+.hero-panel strong,
+.hero-panel span {
+  display: block;
+}
+
+.hero-panel strong {
+  color: #ffd36a;
+  font-size: 1.75rem;
+  line-height: 1;
+}
+
+.hero-panel span {
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-top: 0.45rem;
 }
 
 .hero-actions {
@@ -241,9 +284,13 @@ img {
 }
 
 .project-spotlight {
+  align-items: center;
   background: var(--teal-dark);
   border-radius: 8px;
   color: var(--white);
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: minmax(0, 1fr) auto;
   margin: 2rem 0;
   padding: 1.5rem;
 }
@@ -262,6 +309,24 @@ img {
   max-width: 760px;
 }
 
+.project-spotlight ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-spotlight li {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.35rem 0.55rem;
+}
+
 .projects-grid {
   display: grid;
   gap: 1rem;
@@ -277,6 +342,17 @@ img {
   gap: 1rem;
   min-height: 100%;
   padding: 1.25rem;
+  position: relative;
+}
+
+.project-card::before {
+  background: var(--coral);
+  content: "";
+  height: 4px;
+  left: 1.25rem;
+  position: absolute;
+  right: 1.25rem;
+  top: 0;
 }
 
 .project-card.is-active {
@@ -312,6 +388,13 @@ img {
   margin: 0;
 }
 
+.project-card .project-detail {
+  border-left: 3px solid var(--gold);
+  color: var(--ink);
+  font-size: 0.95rem;
+  padding-left: 0.85rem;
+}
+
 .tag-list {
   display: flex;
   flex-wrap: wrap;
@@ -340,49 +423,133 @@ img {
 }
 
 .contact-section {
-  background: var(--white);
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.08), rgba(214, 164, 55, 0.15)),
+    var(--white);
   border-top: 1px solid var(--line);
   max-width: none;
 }
 
-.contact-section > * {
+.contact-shell {
+  align-items: stretch;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
   margin-left: auto;
   margin-right: auto;
   max-width: 1120px;
 }
 
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 1.5rem;
+.contact-copy {
+  align-self: center;
 }
 
-.contact-links a {
+.contact-copy h2 {
+  font-size: 3rem;
+  line-height: 1.08;
+  margin-bottom: 1rem;
+}
+
+.contact-copy p:not(.section-label) {
+  color: var(--muted);
+  font-size: 1.08rem;
+  margin: 0;
+}
+
+.contact-panel {
+  background: var(--ink);
+  border-radius: 8px;
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.contact-card {
+  background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--line);
   border-radius: 8px;
-  color: var(--teal-dark);
-  font-weight: 800;
-  padding: 0.8rem 1rem;
+  color: var(--white);
+  display: block;
+  padding: 1.15rem;
   text-decoration: none;
   word-break: break-word;
 }
 
-.contact-links a:hover,
-.contact-links a:focus-visible {
-  background: #e6f3ef;
+.contact-card:hover,
+.contact-card:focus-visible {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.44);
 }
 
-.blog-page {
-  background: var(--paper);
+.contact-card span,
+.contact-card strong,
+.contact-card small {
+  display: block;
 }
 
-.blog-intro {
-  padding-bottom: 3rem;
+.contact-card span {
+  color: #ffd36a;
+  font-size: 0.78rem;
+  font-weight: 900;
+  margin-bottom: 0.55rem;
+  text-transform: uppercase;
 }
 
-.blog-intro h1 {
+.contact-card strong {
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.contact-card small {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.primary-contact {
+  background: var(--teal);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.blog-hero {
+  align-items: center;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: minmax(0, 0.85fr) minmax(320px, 1.15fr);
+  margin: 0 auto;
+  max-width: 1220px;
+  padding: 5rem 5% 4rem;
+}
+
+.blog-hero-copy h1 {
   color: var(--teal-dark);
+  font-size: 4rem;
+  line-height: 1.05;
+  margin: 0 0 1.2rem;
+}
+
+.blog-hero-copy p:not(.section-label) {
+  color: var(--muted);
+  font-size: 1.08rem;
+  margin: 0;
+}
+
+.blog-mosaic {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr 0.85fr;
+  grid-template-rows: 170px 170px;
+}
+
+.blog-mosaic img {
+  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.blog-mosaic img:first-child {
+  grid-row: span 2;
 }
 
 .blog-posts {
@@ -444,14 +611,37 @@ img {
 
 @media (max-width: 900px) {
   .hero h1,
-  .blog-intro h1 {
+  .blog-hero-copy h1 {
     font-size: 3rem;
   }
 
   .about-section,
   .projects-grid,
+  .blog-hero,
+  .contact-shell,
   .travel-stop {
     grid-template-columns: 1fr;
+  }
+
+  .hero {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .hero-panel {
+    margin: 2rem 0 0;
+    max-width: none;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .project-spotlight {
+    grid-template-columns: 1fr;
+  }
+
+  .project-spotlight ul {
+    justify-content: flex-start;
   }
 
   .travel-stop:nth-child(even) figure {
@@ -486,7 +676,7 @@ img {
   }
 
   .hero h1,
-  .blog-intro h1 {
+  .blog-hero-copy h1 {
     font-size: 2.45rem;
   }
 
@@ -498,8 +688,38 @@ img {
     padding: 3.5rem 5%;
   }
 
+  .blog-hero {
+    padding: 3.5rem 5%;
+  }
+
+  .blog-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, 180px);
+  }
+
+  .blog-mosaic img:first-child {
+    grid-row: auto;
+  }
+
+  .hero-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel div {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.28);
+    border-right: 0;
+  }
+
+  .hero-panel div:last-child {
+    border-bottom: 0;
+  }
+
   .section h2 {
     font-size: 2rem;
+  }
+
+  .contact-copy h2 {
+    font-size: 2.35rem;
   }
 
   .project-card-header {

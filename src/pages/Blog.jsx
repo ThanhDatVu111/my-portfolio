@@ -30,14 +30,21 @@ const stops = [
 function Blog() {
   return (
     <main className="blog-page">
-      <section className="section blog-intro">
-        <p className="section-label">Spring Break Blog</p>
-        <h1>Spring Break 2026: San Francisco</h1>
-        <p>
-          After a long semester, San Francisco felt like the right kind of reset:
-          busy enough to feel exciting, open enough to slow down, and full of
-          places that made me want to keep walking a little farther.
-        </p>
+      <section className="blog-hero">
+        <div className="blog-hero-copy">
+          <p className="section-label">Spring Break Blog</p>
+          <h1>Spring Break 2026: San Francisco</h1>
+          <p>
+            After a long semester, San Francisco felt like the right kind of reset:
+            busy enough to feel exciting, open enough to slow down, and full of
+            places that made me want to keep walking a little farther.
+          </p>
+        </div>
+        <div className="blog-mosaic" aria-label="San Francisco trip photos">
+          {stops.map((stop) => (
+            <img key={stop.title} src={stop.image} alt={stop.alt} />
+          ))}
+        </div>
       </section>
 
       <section className="section blog-posts" aria-label="San Francisco travel stops">
